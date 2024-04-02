@@ -31,7 +31,7 @@ OPENAI_API_KEY=os.getenv("OPENAI_API_KEY", "")
 API_KEY_UNSTRUCTURED = os.getenv("API_KEY_UNSTRUCTURED", "")
 API_BASE_URL_UNSTRUCTURED = os.getenv("API_BASE_URL_UNSTRUCTURED", "")
 ES_HOST = os.getenv("ES_HOST", "")
-ES_PORT = os.getenv("ES_PORT", "")
+ES_PORT = int(os.getenv("ES_PORT", "9200"))
 ES_INDEX = os.getenv("ES_INDEX", "")
 
 model = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-1106", api_key=SecretStr(OPENAI_API_KEY) )
