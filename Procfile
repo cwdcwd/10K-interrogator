@@ -1,0 +1,1 @@
+app: python src/rag.py
