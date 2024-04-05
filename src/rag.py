@@ -1,5 +1,6 @@
 # Import the necessary modules and functions
 import os
+from dotenv import load_dotenv
 import code
 from unstructured.partition.pdf import partition_pdf
 from pydantic import BaseModel
@@ -27,6 +28,9 @@ from operator import itemgetter
 import pickle
 from itertools import chain
 from langchain_core.pydantic_v1 import SecretStr
+
+# Load the .env file. By default, it looks for the .env file in the same directory as the script being run, or you can specify the path as an argument.
+load_dotenv()
 
 OPENAI_API_KEY=os.getenv("OPENAI_API_KEY", "")
 API_KEY_UNSTRUCTURED = os.getenv("API_KEY_UNSTRUCTURED", "")
