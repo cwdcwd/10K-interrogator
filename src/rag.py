@@ -1,5 +1,6 @@
 # Import the necessary modules and functions
 import os
+import code
 from unstructured.partition.pdf import partition_pdf
 from pydantic import BaseModel
 from typing import Any
@@ -381,14 +382,23 @@ def interrogateLLMWithRAG(query):
   return rag_chain.invoke(query)
 
 
-print("Running queries")
-# searchForSimilarDocs()
-# query_result = interrogateLLM("How much is Amazon and Alphabet investing in R&D?")
-# print(query_result)
+# print("Running queries")
+# # searchForSimilarDocs()
+# # query_result = interrogateLLM("How much is Amazon and Alphabet investing in R&D?")
+# # print(query_result)
 
-searchResults = interrogateLLMWithRAG({"question":"What is Amazon's approach to sustainability and environmental impact?"})
-print(searchResults)
+# searchResults = interrogateLLMWithRAG({"question":"What is Amazon's approach to sustainability and environmental impact?"})
+# print(searchResults)
 
-searchResults = interrogateLLMWithRAG({"question":"Who are Alphabet's main competitors?"})
-print(searchResults)
+# searchResults = interrogateLLMWithRAG({"question":"Who are Alphabet's main competitors?"})
+# print(searchResults)
 
+functions = {
+  'interrogateLLM': interrogateLLM,
+  'interrogateLLMWithRAG': interrogateLLMWithRAG,
+  'loadAndProcessFiles': loadAndProcessFiles,
+}
+
+repl = code.InteractiveConsole(locals=functions)
+repl.interact(banner="How can I help?", exitmsg="Goodbye!")
+# repl.runsource('function1()', '<input>', 'exec', functions)
