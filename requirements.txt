@@ -1,5 +1,6 @@
 elasticsearch
 os
+python-dotenv
 pickle
 pydantic
 uuid
